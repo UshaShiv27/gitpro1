@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>PersonMain.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PersonMain.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">cts</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">cts</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">Gender</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">cts</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">Person</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">cts</span><span class="s2">.</span><span class="s1">service</span><span class="s2">.</span><span class="s1">PersonService</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">boot</span><span class="s2">.</span><span class="s1">SpringApplication</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">boot</span><span class="s2">.</span><span class="s1">autoconfigure</span><span class="s2">.</span><span class="s1">SpringBootApplication</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">context</span><span class="s2">.</span><span class="s1">ConfigurableApplicationContext</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s1">@SpringBootApplication</span>
+<span class="s3">// (scanBasePackages = {&quot;com.cts.service&quot;,&quot;com.cts.dao&quot;})</span>
+<span class="s0">public class </span><span class="s1">PersonMain </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+
+        <span class="s1">ConfigurableApplicationContext ctx </span><span class="s2">=</span>
+                <span class="s1">SpringApplication</span><span class="s2">.</span><span class="s1">run</span><span class="s2">(</span><span class="s1">PersonMain</span><span class="s2">.</span><span class="s0">class</span><span class="s2">, </span><span class="s1">args</span><span class="s2">);</span>
+
+       <span class="s1">PersonService service</span><span class="s2">=</span><span class="s1">ctx</span><span class="s2">.</span><span class="s1">getBean</span><span class="s2">(</span><span class="s1">PersonService</span><span class="s2">.</span><span class="s0">class</span><span class="s2">);</span>
+        <span class="s1">Scanner scanner</span><span class="s2">=</span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+
+<span class="s3">//        System.out.println(&quot;enter id name and salary &quot;);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;enter  name,gender and salary &quot;</span><span class="s2">);</span>
+        <span class="s1">Person person</span><span class="s2">=</span><span class="s0">new </span><span class="s1">Person</span><span class="s2">();</span>
+
+<span class="s3">//        person.setPersonId(scanner.nextInt());</span>
+<span class="s3">//        scanner.nextLine();</span>
+        <span class="s1">person</span><span class="s2">.</span><span class="s1">setPersonName</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">());</span>
+        <span class="s1">person</span><span class="s2">.</span><span class="s1">setGender</span><span class="s2">(</span><span class="s1">Gender</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">next</span><span class="s2">()));</span>
+
+        <span class="s1">person</span><span class="s2">.</span><span class="s1">setPersonSalary</span><span class="s2">(</span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextFloat</span><span class="s2">());</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">person</span><span class="s2">);</span>
+        <span class="s1">service</span><span class="s2">.</span><span class="s1">addPerson</span><span class="s2">(</span><span class="s1">person</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;all person &quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;using for loop &quot;</span><span class="s2">);</span>
+        <span class="s0">for</span><span class="s2">(</span><span class="s1">Person p</span><span class="s2">: </span><span class="s1">service</span><span class="s2">.</span><span class="s1">getAllPerson</span><span class="s2">())</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">p</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;using for each method &quot;</span><span class="s2">);</span>
+        <span class="s1">service</span><span class="s2">.</span><span class="s1">getAllPerson</span><span class="s2">().</span><span class="s1">forEach</span><span class="s2">(</span><span class="s1">person1 -&gt; System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">person1</span><span class="s2">));</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
